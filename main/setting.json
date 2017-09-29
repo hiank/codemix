@@ -1,0 +1,45 @@
+{
+    "filter": {
+
+
+        "dir-s": "",
+        "dir-d": "",
+
+        "ignore": [
+            "QualityAble.cpp",
+            "CreateAFolder.cpp",
+            "ScrollView.cpp",
+            "Item.cpp",
+            "CurlLoad.cpp",
+            "CSocketUtil.cpp",
+            "OnlineManager.cpp",
+            "SkillTips.cpp",
+            "UniqueKungFuExchange.cpp",
+            "DealErrorCode.cpp",
+            "qdes.cpp",
+            "UserDataEx.cpp",
+            "UniqueKungFuMainLayer.cpp",
+            "DirtyWordManager.cpp"
+        ],
+        "ignore-pre": [
+            "CC"
+        ],
+        "match-suf": [
+            ".cpp",
+            ".m",
+            ".mm"
+        ]
+    },
+
+    "mix": {
+
+        "num-min": 20,
+        "num-max": 100,
+        "ignore-randname": [
+            "pyw",
+            "weixin",
+            "alipay",
+            "wxpay"
+        ]
+    }
+}
