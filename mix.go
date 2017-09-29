@@ -197,9 +197,6 @@ func randType(num int) (t string) {
 
 func randName() (n string) {
 
-
-	ignore := config.GetConfig().M.IgnoreRandname
-
 L:	for {
 		nameLen := 10 + rand.Intn(8)
 		t := make([]byte, nameLen)
@@ -209,16 +206,29 @@ L:	for {
 		}
 		n = string(t)
 		
-		for _, v := range ignore {
-			
-			if strings.Contains(n, v) {
-	
-				continue L
-			}
+		if ignoreName(n) {
+
+			continue L
 		}
 		break L
 	}
 	return
+}
+
+func ignoreName(name string) bool {
+
+
+	name = strings.ToLower(name)
+	ignore, rlt := config.GetConfig().M.IgnoreRandname, false
+	for _, v := range ignore {
+		
+		v = strings.ToLower(v)
+		if strings.Contains(name, v) {
+
+			rlt = true
+		}
+	}
+	return rlt
 }
 
 func randNumByte() byte {
@@ -257,8 +267,6 @@ func randParam() (p string) {
 
 func randParamName(list []string) (name string) {
 
-	ignore := config.GetConfig().M.IgnoreRandname
-
 L:	for {
 		nameLen := 2 + rand.Intn(6)
 		numLen := 1 + rand.Intn(3)
@@ -273,12 +281,9 @@ L:	for {
 		}
 		
 		name = string(t)
-		for _, v := range ignore {
-			
-			if strings.Contains(name, v) {
-	
-				continue L
-			}
+		if ignoreName(name) {
+
+			continue L
 		}
 			
 		for _, v := range list {
